@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -99,29 +100,37 @@ export const Navigation: React.FC = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 top-[73.5px] bg-surface-dim/100 backdrop-blur-3xl z-40 md:hidden animate-in fade-in slide-in-from-top duration-300">
-          <div className="flex flex-col p-6 gap-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={() => handleLinkClick(link.id)}
-                className={`text-2xl font-headline font-bold py-4 border-b border-outline-variant/20 flex items-center justify-between ${activeSection === link.id ? "text-primary" : "text-on-surface"
-                  }`}
-              >
-                {link.label}
-                <span className="material-symbols-outlined opacity-30">chevron_right</span>
-              </a>
-            ))}
-            <div className="mt-8">
-              <button className="w-full bg-primary-container text-on-primary-container px-6 py-4 rounded-xl font-label text-md font-bold active:scale-95 transition-all duration-200">
-                {t.nav.source}
-              </button>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 top-[73.5px] bg-background z-40 md:hidden overscroll-none"
+          >
+            <div className="flex flex-col p-6 gap-2 bg-background">
+              {navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={() => handleLinkClick(link.id)}
+                  className={`text-2xl font-headline font-bold py-4 border-b border-outline-variant/20 flex items-center justify-between ${activeSection === link.id ? "text-primary" : "text-on-surface"
+                    }`}
+                >
+                  {link.label}
+                  <span className="material-symbols-outlined opacity-30">chevron_right</span>
+                </a>
+              ))}
+              <div className="mt-8">
+                <button className="w-full bg-primary-container text-on-primary-container px-6 py-4 rounded-xl font-label text-md font-bold active:scale-95 transition-all duration-200">
+                  {t.nav.source}
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
