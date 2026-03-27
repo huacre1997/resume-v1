@@ -195,7 +195,7 @@ export const HeroSection: React.FC = () => {
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mt-12 bg-surface-container-low border-y border-white/5 py-8 overflow-hidden relative z-0"
       >

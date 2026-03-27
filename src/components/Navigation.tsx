@@ -7,6 +7,8 @@ export const Navigation: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = React.useState('home');
 
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,25 +40,41 @@ export const Navigation: React.FC = () => {
     { id: 'contact', label: t.nav.contact },
   ];
 
-  return (
-    <nav className="fixed top-0 w-full z-50 bg-surface-dim/60 backdrop-blur-xl border-b border-white/10 shadow-[0_20px_40px_rgba(55,118,171,0.08)] flex justify-between items-center px-8 py-4 max-w-full font-space-grotesk font-medium tracking-tight">
+  const handleLinkClick = (id: string) => {
+    setActiveSection(id);
+    setIsMenuOpen(false);
+  };
 
-      <div className="hidden md:flex items-center gap-6">
-        {navLinks.map((link) => (
-          <a
-            key={link.id}
-            href={`#${link.id}`}
-            onClick={() => setActiveSection(link.id)}
-            className={`transition-all duration-200 px-2 py-1 ${activeSection === link.id
-              ? "text-primary border-b-2 border-primary pb-1"
-              : "text-on-surface-variant hover:text-on-surface hover:bg-surface-bright rounded"
-              }`}
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-surface-dim/60 backdrop-blur-xl border-b border-white/10 shadow-[0_20px_40px_rgba(55,118,171,0.08)] flex justify-between items-center px-6 md:px-8 py-4 max-w-full font-space-grotesk font-medium tracking-tight">
       <div className="flex items-center gap-4">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden text-on-surface hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/5"
+        >
+          <span className="material-symbols-outlined text-2xl">
+            {isMenuOpen ? 'close' : 'menu'}
+          </span>
+        </button>
+
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => handleLinkClick(link.id)}
+              className={`transition-all duration-200 px-2 py-1 ${activeSection === link.id
+                ? "text-primary border-b-2 border-primary pb-1"
+                : "text-on-surface-variant hover:text-on-surface hover:bg-surface-bright rounded"
+                }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2 md:gap-4">
         <button
           onClick={() => setLang(lang === 'EN' ? 'ES' : 'EN')}
           className="text-slate-400 hover:text-white font-label font-bold text-sm w-8 cursor-pointer transition-colors"
@@ -75,10 +93,35 @@ export const Navigation: React.FC = () => {
           </span>
         </button>
 
-        <button className="bg-primary-container text-on-primary-container px-6 py-2 rounded-md font-label text-sm font-bold active:scale-95 transition-all duration-200 hover:shadow-[0_0_15px_rgba(245,203,49,0.3)] cursor-pointer">
+        <button className="hidden sm:block bg-primary-container text-on-primary-container px-6 py-2 rounded-md font-label text-sm font-bold active:scale-95 transition-all duration-200 hover:shadow-[0_0_15px_rgba(245,203,49,0.3)] cursor-pointer">
           {t.nav.source}
         </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 top-[73px] bg-surface-dim z-40 md:hidden animate-in fade-in slide-in-from-top duration-300">
+          <div className="flex flex-col p-6 gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => handleLinkClick(link.id)}
+                className={`text-2xl font-headline font-bold py-4 border-b border-outline-variant/20 flex items-center justify-between ${activeSection === link.id ? "text-primary" : "text-on-surface"
+                  }`}
+              >
+                {link.label}
+                <span className="material-symbols-outlined opacity-30">chevron_right</span>
+              </a>
+            ))}
+            <div className="mt-8">
+              <button className="w-full bg-primary-container text-on-primary-container px-6 py-4 rounded-xl font-label text-md font-bold active:scale-95 transition-all duration-200">
+                {t.nav.source}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
