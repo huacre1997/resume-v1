@@ -48,42 +48,126 @@ export const HeroSection: React.FC = () => {
             {t.hero.descPre} <span className="text-on-surface">{t.hero.descHighlight}</span>{t.hero.descPost}
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
-            <button className="bg-primary-container text-on-primary-container px-8 py-4 rounded-md font-label font-bold flex items-center gap-2 hover:bg-primary transition-all active:scale-95 group cursor-pointer shadow-[0_10px_20px_rgba(137,195,253,0.15)] hover:shadow-[0_15px_30px_rgba(137,195,253,0.3)]">
-              {t.hero.btnProjects}
-              <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
-            </button>
-            <a
+            <motion.button
+              initial="initial"
+              whileHover="hover"
+              className="relative overflow-hidden bg-primary-container text-on-primary-container px-8 py-4 rounded-md font-label font-bold flex items-center gap-2 transition-all active:scale-95 group cursor-pointer shadow-[0_10px_20px_rgba(137,195,253,0.15)] hover:shadow-[0_15px_30px_rgba(137,195,253,0.3)]"
+            >
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "0%" },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-primary/20 z-0"
+              />
+              <div className="relative z-10 flex items-center gap-2">
+                {t.hero.btnProjects}
+                <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+              </div>
+            </motion.button>
+            <motion.a
               href="/cv.pdf"
               download
-              className="border border-outline-variant text-tertiary px-8 py-4 rounded-md font-label font-bold hover:bg-surface-variant transition-all active:scale-95 flex items-center gap-2 cursor-pointer bg-surface-dim/30 backdrop-blur-sm shadow-sm"
+              initial="initial"
+              whileHover="hover"
+              className="relative overflow-hidden border border-outline-variant text-tertiary px-8 py-4 rounded-md font-label font-bold transition-all active:scale-95 flex items-center gap-2 cursor-pointer bg-surface-dim/30 backdrop-blur-sm shadow-sm"
             >
-              <span className="material-symbols-outlined">download</span>
-              {t.hero.btnResume}
-            </a>
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "0%" },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-tertiary/10 z-0"
+              />
+              <div className="relative z-10 flex items-center gap-2">
+                <span className="material-symbols-outlined">download</span>
+                {t.hero.btnResume}
+              </div>
+            </motion.a>
           </div>
 
           <div className="pt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="p-4 rounded-xl border-l-4 border-[#092E20] group hover:bg-[#092E20]/20 transition-all duration-300 flex items-center gap-4" style={{ backdropFilter: 'blur(12px)', background: 'rgba(32, 38, 47, 0.4)' }}>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" className="w-8 h-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all invert" alt="Django" />
-              <div>
-                <div className="font-label text-[10px] text-on-surface-variant group-hover:text-primary mb-1 uppercase tracking-widest">{t.hero.framework}</div>
-                <div className="font-headline text-md font-bold text-on-surface">Django</div>
+
+            <motion.div
+              className="p-4 rounded-xl border-l-4 border-[#092E20] flex items-center gap-4 relative overflow-hidden"
+              style={{
+                backdropFilter: "blur(12px)",
+                background: "rgba(32, 38, 47, 0.4)",
+              }}
+              initial="initial"
+              whileHover="hover"
+            >
+              {/* overlay */}
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "0%" },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-[#44b78b]/10 z-0"
+              />
+
+              {/* contenido */}
+              <div className="relative z-10 flex items-center gap-4 w-full">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" className="w-8 h-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all invert" alt="Django" />
+                <div>
+                  <div className="font-label text-xs text-on-surface-variant group-hover:text-primary-dim mb-1 uppercase tracking-widest">{t.hero.framework}</div>
+                  <div className="font-headline text-md font-bold text-on-surface">Django</div>
+                </div>
               </div>
-            </div>
-            <div className="p-4 rounded-xl border-l-4 border-[#009688] group hover:bg-[#009688]/20 transition-all duration-300 flex items-center gap-4" style={{ backdropFilter: 'blur(12px)', background: 'rgba(32, 38, 47, 0.4)' }}>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" className="w-8 h-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all" alt="FastAPI" />
-              <div>
-                <div className="font-label text-[10px] text-on-surface-variant group-hover:text-primary mb-1 uppercase tracking-widest">{t.hero.fastIO}</div>
-                <div className="font-headline text-md font-bold text-on-surface">FastAPI</div>
+            </motion.div>
+            <motion.div
+              className="p-4 rounded-xl border-l-4 border-[#009688] flex items-center gap-4 relative overflow-hidden"
+              style={{
+                backdropFilter: "blur(12px)",
+                background: "rgba(32, 38, 47, 0.4)",
+              }}
+              initial="initial"
+              whileHover="hover"
+            >
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "0%" },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-[#009688]/30 z-0"
+              />
+              <div className="relative z-10 flex items-center gap-4 w-full">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" className="w-8 h-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all" alt="FastAPI" />
+                <div>
+                  <div className="font-label text-xs text-on-surface-variant group-hover:text-primary-dim mb-1 uppercase tracking-widest">{t.hero.fastIO}</div>
+                  <div className="font-headline text-md font-bold text-on-surface">FastAPI</div>
+                </div>
               </div>
-            </div>
-            <div className="p-4 rounded-xl border-l-4 border-tertiary group hover:bg-tertiary/10 transition-all duration-300 flex items-center gap-4" style={{ backdropFilter: 'blur(12px)', background: 'rgba(32, 38, 47, 0.4)' }}>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" className="w-8 h-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all bg-white/90 rounded p-1 object-cover" alt="AWS" />
-              <div>
-                <div className="font-label text-[10px] text-on-surface-variant group-hover:text-primary mb-1 uppercase tracking-widest">{t.hero.cloud}</div>
-                <div className="font-headline text-md font-bold text-on-surface">AWS</div>
+            </motion.div>
+            <motion.div
+              className="p-4 rounded-xl border-l-4 border-tertiary flex items-center gap-4 relative overflow-hidden"
+              style={{
+                backdropFilter: "blur(12px)",
+                background: "rgba(32, 38, 47, 0.4)",
+              }}
+              initial="initial"
+              whileHover="hover"
+            >
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "0%" },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-tertiary/20 z-0"
+              />
+              <div className="relative z-10 flex items-center gap-4 w-full">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" className="w-8 h-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all bg-white/90 rounded p-1 object-cover" alt="AWS" />
+                <div>
+                  <div className="font-label text-xs text-on-surface-variant group-hover:text-primary-dim mb-1 uppercase tracking-widest">{t.hero.cloud}</div>
+                  <div className="font-headline text-md font-bold text-on-surface">AWS</div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -93,10 +177,18 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="flex-1 hidden md:flex items-center justify-center mt-12 md:mt-0" style={{ perspective: '1200px' }}
         >
-          <div
+          <motion.div
             ref={terminalRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            animate={{
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
             className="w-full bg-surface-container-lowest rounded-xl border border-white/5 relative group transition-all duration-200 ease-out z-20"
             style={{
               transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) translateZ(40px)`,
@@ -161,41 +253,56 @@ export const HeroSection: React.FC = () => {
                 <div className="flex items-center gap-4">
                   <span className="text-xs font-bold text-on-surface-variant w-24">LATENCY</span>
                   <div className="flex-1 h-1 bg-background rounded-full overflow-hidden border border-white/5">
-                    <div className="h-full bg-secondary w-1/4 shadow-[0_0_10px_rgba(245,203,49,0.8)]"></div>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "25%" }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                      className="h-full bg-secondary shadow-[0_0_10px_rgba(245,203,49,0.8)]"
+                    ></motion.div>
                   </div>
                   <span className="text-xs text-secondary font-bold">12ms</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-xs font-bold text-on-surface-variant w-24">UPTIME</span>
                   <div className="flex-1 h-1 bg-background rounded-full overflow-hidden border border-white/5">
-                    <div className="h-full bg-primary w-[99.9%] shadow-[0_0_10px_rgba(137,195,253,0.8)]"></div>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "99.9%" }}
+                      transition={{ duration: 1, delay: 0.7 }}
+                      className="h-full bg-primary shadow-[0_0_10px_rgba(137,195,253,0.8)]"
+                    ></motion.div>
                   </div>
                   <span className="text-xs text-primary font-bold">99.9%</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-xs font-bold text-on-surface-variant w-24">TRAFFIC</span>
                   <div className="flex-1 h-1 bg-background rounded-full overflow-hidden border border-white/5">
-                    <div className="h-full bg-tertiary w-2/3 shadow-[0_0_10px_rgba(193,128,255,0.8)]"></div>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "66.6%" }}
+                      transition={{ duration: 1, delay: 0.9 }}
+                      className="h-full bg-tertiary shadow-[0_0_10px_rgba(193,128,255,0.8)]"
+                    ></motion.div>
                   </div>
                   <span className="text-xs text-tertiary font-bold">2.4k req/s</span>
                 </div>
               </div>
             </div>
 
-            <div className="absolute bottom-4 right-4 border border-white/10 p-4 rounded-lg shadow-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 bg-surface-bright/80 backdrop-blur-md" style={{ transform: 'translateZ(30px)' }}>
+            <div className="absolute top-[-30px] right-0 border border-white/10 p-4 rounded-lg shadow-xl translate-y-[-4px] group-hover:translate-y-0 transition-transform duration-500 bg-surface-bright/80 backdrop-blur-md" style={{ transform: 'translateZ(30px)' }}>
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(137,195,253,0.8)]"></div>
                 <span className="text-[10px] font-label text-primary uppercase font-bold tracking-widest">{t.hero.systemStatus}</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mt-12 bg-surface-container-low border-y border-white/5 py-8 overflow-hidden relative z-0"
       >

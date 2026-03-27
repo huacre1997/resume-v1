@@ -11,7 +11,7 @@ export const TechStackSection: React.FC = () => {
       <motion.header
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
+        viewport={{ amount: 0.6 }}
         transition={{ duration: 0.6 }}
         className="mb-20"
       >
@@ -29,7 +29,7 @@ export const TechStackSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.5 }}
           className="md:col-span-8 bg-surface-container-low rounded-xl p-8 relative overflow-hidden group border border-outline-variant/20 hover:border-primary/50 transition-colors"
         >
@@ -52,7 +52,7 @@ export const TechStackSection: React.FC = () => {
                 </div>
                 <div className="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
                   <motion.div
-                    initial={{ width: 0 }} whileInView={{ width: "95%" }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }}
+                    initial={{ width: 0 }} whileInView={{ width: "95%" }} viewport={{ }} transition={{ duration: 1, delay: 0.2 }}
                     className="h-full bg-gradient-to-r from-primary to-primary-container w-[95%]"
                   ></motion.div>
                 </div>
@@ -67,7 +67,7 @@ export const TechStackSection: React.FC = () => {
                 </div>
                 <div className="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
                   <motion.div
-                    initial={{ width: 0 }} whileInView={{ width: "60%" }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }}
+                    initial={{ width: 0 }} whileInView={{ width: "60%" }} viewport={{ }} transition={{ duration: 1, delay: 0.2 }}
                     className="h-full bg-gradient-to-r from-primary to-primary-container w-[95%]"
                   ></motion.div>
                 </div>
@@ -86,7 +86,7 @@ export const TechStackSection: React.FC = () => {
               ].map((skill, index) => (
                 <motion.span
                   key={skill.name}
-                  initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}
+                  initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ }} transition={{ delay: index * 0.1 }}
                   className={`px-4 py-2 bg-surface-container-highest border border-${skill.color}/20 text-${skill.color} font-label font-bold text-xs rounded-lg hover:bg-${skill.color} hover:text-surface-lowest transition-all cursor-default shadow-sm`}
                 >
                   {skill.name}
@@ -100,7 +100,7 @@ export const TechStackSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="md:col-span-4 bg-surface-container-high rounded-xl p-8 relative flex flex-col justify-between border border-outline-variant/20 hover:border-tertiary/50 transition-colors"
         >
@@ -137,7 +137,7 @@ export const TechStackSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="md:col-span-5 bg-surface-container-low rounded-xl p-8 border border-outline-variant/20 hover:border-secondary/50 transition-colors"
         >
@@ -181,7 +181,7 @@ export const TechStackSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="md:col-span-7 rounded-xl p-8 border border-outline-variant/20 hover:border-primary/30 transition-colors"
           style={{ backdropFilter: 'blur(12px)', background: isDark ? 'rgba(32, 38, 47, 0.4)' : 'rgba(255, 255, 255, 0.4)' }}
@@ -231,7 +231,7 @@ export const TechStackSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="md:col-span-12 bg-surface-container-low rounded-xl p-8 relative overflow-hidden group border border-outline-variant/20 hover:border-secondary/50 transition-colors"
         >
@@ -253,7 +253,7 @@ export const TechStackSection: React.FC = () => {
               </div>
               <div className="h-2 w-full bg-surface-variant rounded-full overflow-hidden shadow-inner">
                 <motion.div
-                  initial={{ width: 0 }} whileInView={{ width: "80%" }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }}
+                  initial={{ width: 0 }} whileInView={{ width: "80%" }} viewport={{ }} transition={{ duration: 1, delay: 0.2 }}
                   className="h-full bg-gradient-to-r from-secondary to-[#61DAFB] w-[80%] rounded-full shadow-[0_0_10px_rgba(97,218,251,0.3)]"
                 ></motion.div>
               </div>
@@ -272,7 +272,7 @@ export const TechStackSection: React.FC = () => {
               </div>
               <div className="h-2 w-full bg-surface-variant rounded-full overflow-hidden shadow-inner">
                 <motion.div
-                  initial={{ width: 0 }} whileInView={{ width: "25%" }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.4 }}
+                  initial={{ width: 0 }} whileInView={{ width: "25%" }} viewport={{ }} transition={{ duration: 1, delay: 0.4 }}
                   className="h-full bg-gradient-to-r from-primary to-[#E0234E] w-[25%] rounded-full shadow-[0_0_10px_rgba(224,35,78,0.3)]"
                 ></motion.div>
               </div>
@@ -293,7 +293,7 @@ export const TechStackSection: React.FC = () => {
                 key={chip.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ }}
                 transition={{ delay: 0.5 + idx * 0.05 }}
                 className={`flex items-center gap-2 px-4 py-2 bg-surface-container-highest/60 border border-${chip.color}/20 rounded-lg hover:border-${chip.color}/50 hover:bg-surface-container-highest transition-all group cursor-default`}
               >

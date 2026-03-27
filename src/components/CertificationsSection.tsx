@@ -19,7 +19,7 @@ export const CertificationsSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ amount: 0.6 }}
           transition={{ duration: 0.6 }}
           className="max-w-6xl mx-auto"
         >
@@ -46,7 +46,7 @@ export const CertificationsSection: React.FC = () => {
                 key={cert.id}
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="[transform-style:preserve-3d] transition-transform duration-500 ease-out cursor-default group hover:[transform:rotateY(10deg)_rotateX(5deg)_translateY(-10px)] hover:shadow-[0_20px_40px_rgba(137,195,253,0.15)]"
               >
@@ -70,9 +70,25 @@ export const CertificationsSection: React.FC = () => {
                       <span className="material-symbols-outlined text-sm">calendar_today</span>
                       {t.certifications.issuedLabel} {cert.date}
                     </div>
-                    <a className={`flex items-center gap-2 ${theme.text} font-label text-sm group-hover:gap-3 transition-all`} href="#">
-                      {t.certifications.verifyLabel} <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                    </a>
+                    <motion.a 
+                      href="#"
+                      initial="initial"
+                      whileHover="hover"
+                      className={`relative overflow-hidden flex items-center justify-center gap-2 ${theme.text} bg-surface-container-low border ${theme.border} px-4 py-2 rounded-lg font-label text-sm transition-all group/cert-btn`}
+                    >
+                      <motion.div
+                        variants={{
+                          initial: { x: "-100%" },
+                          hover: { x: "0%" },
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className={`absolute inset-0 ${theme.bg} opacity-100 z-0`}
+                        style={{ backgroundColor: theme.bg.includes('primary') ? 'rgba(137, 195, 253, 0.1)' : undefined }}
+                      />
+                      <div className="relative z-10 flex items-center gap-2">
+                        {t.certifications.verifyLabel} <span className="material-symbols-outlined text-sm group-hover/cert-btn:translate-x-1 transition-transform">arrow_forward</span>
+                      </div>
+                    </motion.a>
                   </div>
                 </div>
               </motion.div>
@@ -82,7 +98,7 @@ export const CertificationsSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="[transform-style:preserve-3d] transition-all duration-500 ease-out cursor-default group"
           >

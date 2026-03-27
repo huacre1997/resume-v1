@@ -94,9 +94,23 @@ export const Navigation: React.FC = () => {
           </span>
         </button>
 
-        <button className="hidden sm:block bg-primary-container text-on-primary-container px-6 py-2 rounded-md font-label text-sm font-bold active:scale-95 transition-all duration-200 hover:shadow-[0_0_15px_rgba(245,203,49,0.3)] cursor-pointer">
-          {t.nav.source}
-        </button>
+        <motion.button 
+          initial="initial"
+          whileHover="hover"
+          className="relative overflow-hidden hidden sm:block bg-primary-container text-on-primary-container px-6 py-2 rounded-md font-label text-sm font-bold active:scale-95 transition-all duration-200 cursor-pointer"
+        >
+          <motion.div
+            variants={{
+              initial: { x: "-100%" },
+              hover: { x: "0%" },
+            }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-primary/20 z-0"
+          />
+          <div className="relative z-10">
+            {t.nav.source}
+          </div>
+        </motion.button>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -123,9 +137,23 @@ export const Navigation: React.FC = () => {
                 </a>
               ))}
               <div className="mt-8">
-                <button className="w-full bg-primary-container text-on-primary-container px-6 py-4 rounded-xl font-label text-md font-bold active:scale-95 transition-all duration-200">
-                  {t.nav.source}
-                </button>
+                <motion.button 
+                  initial="initial"
+                  whileHover="hover"
+                  className="relative overflow-hidden w-full bg-primary-container text-on-primary-container px-6 py-4 rounded-xl font-label text-md font-bold active:scale-95 transition-all duration-200"
+                >
+                  <motion.div
+                    variants={{
+                      initial: { x: "-100%" },
+                      hover: { x: "0%" },
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0 bg-primary/20 z-0"
+                  />
+                  <div className="relative z-10 text-center">
+                    {t.nav.source}
+                  </div>
+                </motion.button>
               </div>
             </div>
           </motion.div>

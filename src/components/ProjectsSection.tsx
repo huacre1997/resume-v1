@@ -10,7 +10,7 @@ export const ProjectsSection: React.FC = () => {
       <motion.header
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
+        viewport={{ amount: 0.6 }}
         transition={{ duration: 0.6 }}
         className="mb-20"
       >
@@ -34,7 +34,7 @@ export const ProjectsSection: React.FC = () => {
               key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className={`${project.colSpan} group relative overflow-hidden bg-surface-container-low rounded-xl border border-outline-variant/20 transition-all duration-300 hover:bg-surface-container-high hover:border-primary/50 hover:shadow-[0_0_30px_rgba(137,195,253,0.15)] flex flex-col`}
             >
@@ -73,26 +73,64 @@ export const ProjectsSection: React.FC = () => {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 mt-auto">
-                  {project.link && (
-                    <a
+                    <motion.a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-lg font-label text-xs font-bold tracking-tight hover:bg-primary hover:text-on-primary transition-all cursor-pointer shadow-sm group/btn"
+                      initial="initial"
+                      whileHover="hover"
+                      className="relative overflow-hidden inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-lg font-label text-xs font-bold tracking-tight transition-all cursor-pointer shadow-sm group/btn"
                     >
-                      {t.projects.btnVisit} <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-0.5 transition-transform">open_in_new</span>
-                    </a>
-                  )}
+                      <motion.div
+                        variants={{
+                          initial: { x: "-100%" },
+                          hover: { x: "0%" },
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 bg-primary/20 z-0"
+                      />
+                      <div className="relative z-10 flex items-center gap-2">
+                        {t.projects.btnVisit} <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-0.5 transition-transform">open_in_new</span>
+                      </div>
+                    </motion.a>
                   {isFullWidth ? (
                     <div className="flex gap-4">
-                      <button className="text-on-surface-variant hover:text-primary font-label text-xs flex items-center gap-1 transition-colors cursor-pointer capitalize">
-                        {t.projects.btnGithub} <span className="material-symbols-outlined text-xs">terminal</span>
-                      </button>
+                      <motion.button 
+                        initial="initial"
+                        whileHover="hover"
+                        className="relative overflow-hidden px-3 py-1 bg-surface-container-highest/30 rounded text-on-surface-variant hover:text-primary font-label text-xs flex items-center gap-1 transition-colors cursor-pointer capitalize"
+                      >
+                         <motion.div
+                          variants={{
+                            initial: { x: "-100%" },
+                            hover: { x: "0%" },
+                          }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute inset-0 bg-primary/10 z-0"
+                        />
+                        <div className="relative z-10 flex items-center gap-1">
+                          {t.projects.btnGithub} <span className="material-symbols-outlined text-xs">terminal</span>
+                        </div>
+                      </motion.button>
                     </div>
                   ) : (
-                    <button className="text-on-surface-variant hover:text-primary font-label text-xs flex items-center gap-1 transition-colors cursor-pointer capitalize">
-                      {t.projects.btnLogic} <span className="material-symbols-outlined text-xs">code</span>
-                    </button>
+                    <motion.button 
+                      initial="initial"
+                      whileHover="hover"
+                      className="relative overflow-hidden px-3 py-1 bg-surface-container-highest/30 rounded text-on-surface-variant hover:text-primary font-label text-xs flex items-center gap-1 transition-colors cursor-pointer capitalize"
+                    >
+                      <motion.div
+                        variants={{
+                          initial: { x: "-100%" },
+                          hover: { x: "0%" },
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 bg-primary/10 z-0"
+                      />
+                      <div className="relative z-10 flex items-center gap-1">
+                        {t.projects.btnLogic} <span className="material-symbols-outlined text-xs">code</span>
+                      </div>
+                    </motion.button>
                   )}
                 </div>
               </div>
@@ -104,7 +142,7 @@ export const ProjectsSection: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ amount: 0.4 }}
         transition={{ duration: 0.6 }}
         className="mt-24 py-16 px-12 bg-surface-container-lowest rounded-2xl border border-outline-variant/20 border-l-4 border-l-secondary relative overflow-hidden"
       >
@@ -117,22 +155,46 @@ export const ProjectsSection: React.FC = () => {
             {t.projects.footerPitch}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
+            <motion.a
               href="https://wa.me/51934039437"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary hover:bg-primary-dim text-on-primary px-8 py-3 rounded font-label font-bold tracking-tight transition-all cursor-pointer inline-flex items-center justify-center gap-2"
+              initial="initial"
+              whileHover="hover"
+              className="relative overflow-hidden bg-primary text-on-primary px-8 py-3 rounded font-label font-bold tracking-tight transition-all cursor-pointer inline-flex items-center justify-center gap-2 group/cta"
             >
-              {t.projects.btnContact}
-              <span className="material-symbols-outlined text-sm">forum</span>
-            </a>
-            <a 
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "0%" },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-white/20 z-0"
+              />
+              <div className="relative z-10 flex items-center gap-2">
+                {t.projects.btnContact}
+                <span className="material-symbols-outlined text-sm group-hover/cta:rotate-12 transition-transform">forum</span>
+              </div>
+            </motion.a>
+            <motion.a 
               href="/cv.pdf"
               download
-              className="bg-transparent border border-outline-variant text-on-surface px-8 py-3 rounded font-label font-bold tracking-tight hover:bg-white/5 transition-all cursor-pointer inline-flex items-center justify-center"
+              initial="initial"
+              whileHover="hover"
+              className="relative overflow-hidden bg-transparent border border-outline-variant text-on-surface px-8 py-3 rounded font-label font-bold tracking-tight transition-all cursor-pointer inline-flex items-center justify-center"
             >
-              {t.projects.btnCv}
-            </a>
+              <motion.div
+                variants={{
+                  initial: { x: "-100%" },
+                  hover: { x: "0%" },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-white/5 z-0"
+              />
+              <div className="relative z-10">
+                {t.projects.btnCv}
+              </div>
+            </motion.a>
           </div>
         </div>
       </motion.div>

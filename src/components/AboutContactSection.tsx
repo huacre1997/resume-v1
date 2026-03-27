@@ -60,7 +60,7 @@ export const AboutContactSection: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
+        viewport={{}}
         transition={{ duration: 0.6 }}
         className="mb-12 max-w-7xl mx-auto"
       >
@@ -74,7 +74,7 @@ export const AboutContactSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{}}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-7 flex flex-col gap-6"
           >
@@ -116,7 +116,7 @@ export const AboutContactSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{}}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5"
           >
@@ -147,25 +147,45 @@ export const AboutContactSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{}}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-12 mt-6 lg:mt-12"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-0.5 bg-outline-variant/20 rounded-xl overflow-hidden bg-surface-container-high/60 backdrop-blur-xl border border-outline-variant/10 shadow-lg shadow-primary/5">
               {contactLinks.map((link, idx) => (
-                <a key={idx} href={link.href} target="_blank" rel="noopener noreferrer" className="bg-surface-container-low hover:bg-surface-container-high p-6 flex flex-col items-center justify-center gap-4 transition-all group lg:min-h-[160px]">
-                  {link.isImage ? (
-                    <img src={link.icon} className={`w-8 h-8 group-hover:scale-110 transition-transform ${link.hoverName === 'on-surface' ? 'dark:invert opacity-80' : ''}`} alt={link.label} />
-                  ) : (
-                    <span className={`material-symbols-outlined ${colorMap[link.hoverName].text} text-3xl group-hover:scale-110 transition-transform`}>
-                      {link.icon}
-                    </span>
-                  )}
-                  <div className="text-center">
-                    <div className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">{link.label}</div>
-                    <div className="font-headline text-[11px] lg:text-sm text-on-surface break-all">{link.value}</div>
+                <motion.a
+                  key={idx}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`relative flex flex-col items-center justify-center gap-4 p-6 transition-all group lg:min-h-[160px] bg-surface-container-low overflow-hidden`}
+                  initial="initial"
+                  whileHover="hover"
+                >
+                  {/* overlay */}
+                  <motion.div
+                    variants={{
+                      initial: { x: "-100%" },
+                      hover: { x: "0%" },
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className={`absolute inset-0 ${colorMap[link.hoverName].bgSoft} z-0`}
+                  />
+
+                  <div className="relative z-10 flex flex-col items-center gap-4 w-full">
+                    {link.isImage ? (
+                      <img src={link.icon} className={`w-8 h-8 group-hover:scale-110 transition-transform ${link.hoverName === 'on-surface' ? 'dark:invert opacity-80' : ''}`} alt={link.label} />
+                    ) : (
+                      <span className={`material-symbols-outlined ${colorMap[link.hoverName].text} text-3xl group-hover:scale-110 transition-transform`}>
+                        {link.icon}
+                      </span>
+                    )}
+                    <div className="text-center">
+                      <div className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">{link.label}</div>
+                      <div className="font-headline text-[11px] lg:text-sm text-on-surface break-all">{link.value}</div>
+                    </div>
                   </div>
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
@@ -174,14 +194,19 @@ export const AboutContactSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{}}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-12 flex flex-wrap justify-between items-center gap-8 py-6 border-y border-outline-variant/10"
         >
           {techStats.map((stat, idx) => (
-            <div key={idx} className="flex items-center gap-4">
-              <div className={`w-12 h-1 ${colorMap[stat.colorName].bgSoft} rounded-full overflow-hidden`}>
-                <div className={`h-full ${colorMap[stat.colorName].bg}`} style={{ width: `${stat.percentage}%` }}></div>
+            <div key={idx} className="flex flex-col gap-2 min-w-[120px]">
+              <div className={`w-64 h-1.5 ${colorMap[stat.colorName].bgSoft} rounded-full overflow-hidden`}>
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${stat.percentage}%` }}
+                  transition={{ duration: 1, delay: 0.5 + idx * 0.1 }}
+                  className={`h-full ${colorMap[stat.colorName].bg}`}
+                ></motion.div>
               </div>
               <div>
                 <div className="font-label text-[10px] text-on-surface-variant tracking-widest">{stat.label}</div>

@@ -18,12 +18,12 @@ export const ExperienceSection: React.FC = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.3 }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 0 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
@@ -35,7 +35,7 @@ export const ExperienceSection: React.FC = () => {
       <motion.header
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mb-20"
       >
@@ -54,7 +54,7 @@ export const ExperienceSection: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ amount: 0.1 }}
         className="relative grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 md:gap-0"
       >
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 h-full w-[2px] bg-gradient-to-b from-primary via-secondary to-tertiary opacity-20"></div>
@@ -104,7 +104,7 @@ export const ExperienceSection: React.FC = () => {
 
                 <div className="hidden md:flex justify-center items-start pt-10 z-10 md:mt-12">
                   <motion.div
-                    initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 + (idx * 0.1) }}
+                    initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{}} transition={{ delay: 0.3 + (idx * 0.1) }}
                     className={`w-4 h-4 rounded-full ${color.bg} border-4 border-surface-dim ring-4 ${color.ring}`}
                   ></motion.div>
                 </div>
@@ -119,7 +119,7 @@ export const ExperienceSection: React.FC = () => {
 
                 <div className="hidden md:flex justify-center items-start pt-10 z-10 md:mt-12">
                   <motion.div
-                    initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 + (idx * 0.1) }}
+                    initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{}} transition={{ delay: 0.3 + (idx * 0.1) }}
                     className={`w-4 h-4 rounded-full ${color.bg} border-4 border-surface-dim ring-4 ${color.ring}`}
                   ></motion.div>
                 </div>
