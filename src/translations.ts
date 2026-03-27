@@ -34,8 +34,8 @@ export const translations = {
         textHighlight: 'high-performance systems',
         textPost: '. I focus on building solutions that handle high loads and remain stable even in demanding environments.',
         points: [
-          'I am interested in contributing to open source and continuously learning to grow within the Python ecosystem.',
-          'In my free time, I enjoy watching cult movies and playing MOBAs.'
+          'I am interested in software development and process automation.',
+          'In my free time, I enjoy watching cult movies, traveling, and playing video games.'
         ]
       },
       personal: {
@@ -366,8 +366,8 @@ export const translations = {
         textHighlight: 'sistemas de alto rendimiento',
         textPost: '. Me enfoco en desarrollar soluciones que soportan alta carga y funcionan de manera estable incluso en entornos exigentes.',
         points: [
-          'Me interesa contribuir al código abierto y seguir aprendiendo para mejorar dentro del ecosistema Python..',
-          'En mi tiempo libre disfruto el ver peliculas de culto, y jugar MOBAS.'
+          'Me interesa mucho el desarrollo de software y la automatización de procesos.',
+          'En mi tiempo libre disfruto el ver peliculas de culto,viajar, y jugar videojuegos.'
         ]
       },
       personal: {
