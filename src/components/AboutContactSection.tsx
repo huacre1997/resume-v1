@@ -45,7 +45,7 @@ export const AboutContactSection: React.FC = () => {
     { href: 'https://github.com/huacre1997', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg', isImage: true, label: t.about.contact.githubLabel, value: '/huacre1997', hoverName: 'on-surface' },
     { href: 'https://www.linkedin.com/in/joel-huacre-enciso-060486199/', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg', isImage: true, label: t.about.contact.linkedinLabel, value: '/joel-huacre-enciso-060486199', hoverName: 'tertiary' },
     { href: 'mailto:huacreenciso97@gmail.com', icon: 'mail', label: t.about.contact.mailLabel, value: 'huacreenciso97@gmail.com', hoverName: 'primary' },
-    { href: 'https://wa.me/934039437', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/whatsapp/whatsapp-original.svg', isImage: true, label: t.about.contact.whatsappLabel, value: '+51 934039437', hoverName: 'secondary' },
+    { href: 'https://wa.me/934039437', icon: 'phone', label: t.about.contact.whatsappLabel, value: '+51 934039437', hoverName: 'secondary' },
   ];
 
   const techStats: TechStat[] = [

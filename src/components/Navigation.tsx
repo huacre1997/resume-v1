@@ -100,7 +100,7 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-[73px] bg-surface-dim z-40 md:hidden animate-in fade-in slide-in-from-top duration-300">
+        <div className="fixed inset-0 top-[73.5px] bg-surface-dim/100 backdrop-blur-3xl z-40 md:hidden animate-in fade-in slide-in-from-top duration-300">
           <div className="flex flex-col p-6 gap-2">
             {navLinks.map((link) => (
               <a
